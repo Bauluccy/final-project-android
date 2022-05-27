@@ -8,53 +8,56 @@
     tools:context=".TelaCadastro">
 
     <EditText
-        android:id="@+id/editLogin"
+        android:id="@+id/editarLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
-        android:hint="Digite o login do usuário"
+        android:hint="Login"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editSenha"
+        android:id="@+id/editarSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
-        android:hint="Digite a senha"
+        android:enabled="false"
+        android:hint="Senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/editarLogin" />
 
     <EditText
-        android:id="@+id/editConfirmaSenha"
+        android:id="@+id/editarConfirma"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
-        android:hint="Confirme a senha"
+        android:enabled="false"
+        android:hint="Confirmar senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/editarSenha" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
+        android:enabled="false"
         android:text="Entrada"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="45dp"
+        android:enabled="false"
         android:text="Saida"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,56 +79,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:enabled="false"
         android:text="Intervalo"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editConfirmaSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/editarConfirma" />
 
     <EditText
-        android:id="@+id/editTextTime6"
+        android:id="@+id/editarInter"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="time"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTime8"
+        app:layout_constraintEnd_toStartOf="@+id/editarSaida"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/editTextTime7"
+        app:layout_constraintStart_toEndOf="@+id/editarEntrada"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editTextTime7"
+        android:id="@+id/editarEntrada"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTime6" />
+        app:layout_constraintTop_toTopOf="@+id/editarInter" />
 
     <EditText
-        android:id="@+id/editTextTime8"
+        android:id="@+id/editarSaida"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTime6" />
+        app:layout_constraintTop_toTopOf="@+id/editarInter" />
+
+    <CheckBox
+        android:id="@+id/checkSupervisor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="44dp"
+        android:enabled="false"
+        android:text="Supervisor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editarInter" />
 
     <Button
         android:id="@+id/botaoCadastrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
-        android:onClick="cadastrarUsuario"
+        android:enabled="false"
         android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime6" />
+        app:layout_constraintTop_toBottomOf="@+id/checkSupervisor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
