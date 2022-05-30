@@ -8,20 +8,6 @@
     tools:context=".TelaCadastro">
 
     <EditText
-        android:id="@+id/editarLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="30dp"
-        android:ems="10"
-        android:hint="Login"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
         android:id="@+id/editarSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -34,7 +20,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editarLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/editarNome" />
 
     <EditText
         android:id="@+id/editarConfirma"
@@ -57,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Entrada"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="45dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Saida"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,8 +64,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:enabled="false"
+        android:layout_marginTop="20dp"
+        android:enabled="true"
         android:text="Intervalo"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
@@ -141,10 +127,42 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
         android:enabled="false"
+        android:onClick="cadastrarUsuario"
         android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkSupervisor" />
+
+    <EditText
+        android:id="@+id/editarNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:enabled="true"
+        android:hint="Nome e Sobrenome"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editarEmail" />
+
+    <EditText
+        android:id="@+id/editarEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

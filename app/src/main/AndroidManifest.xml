@@ -16,13 +16,13 @@
             android:name=".TelaLogin"
             android:exported="false" />
         <activity
-            android:name=".TelaCadastro"
+            android:name=".TelaBloqDesbloq"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".TelaBloqDesbloq"
+            android:name=".TelaCadastro"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
