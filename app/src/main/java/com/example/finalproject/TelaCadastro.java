@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
@@ -22,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class TelaCadastro extends AppCompatActivity {
 
-    private EditText editEmail, editSenha, editConfirma, editNome;
+    private EditText cadEmail, cadSenha, cadConfirma, cadNome;
     private EditText editEntrada, editInter, editSaida;
     private Button btadastrar;
     private CheckBox ckSuper;
@@ -42,43 +40,36 @@ public class TelaCadastro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);
         
-        editEmail = findViewById(R.id.editarEmail);
-        editSenha = findViewById(R.id.editarSenha);
-        editConfirma = findViewById(R.id.editarConfirma);
-        editNome = findViewById(R.id.editarNome);
+        cadEmail = findViewById(R.id.cadastrarEmail);
+        cadSenha = findViewById(R.id.cadastrarSenha);
+        cadConfirma = findViewById(R.id.cadastrarConfirma);
+        cadNome = findViewById(R.id.cadastrarNome);
 
-        editEntrada = findViewById(R.id.editarEntrada);
-        editInter = findViewById(R.id.editarInter);
-        editSaida = findViewById(R.id.editarSaida);
+        editEntrada = findViewById(R.id.cadastrarEnt);
+        editInter = findViewById(R.id.cadastrarInter);
+        editSaida = findViewById(R.id.cadastrarSaida);
 
-        ckSuper = findViewById(R.id.checkSupervisor);
+        ckSuper = findViewById(R.id.checkCadastroSupervisor);
 
         btadastrar = findViewById(R.id.botaoCadastrar);
 
-        editEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        cadEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
 
+                if (!cadEmail.isFocused()){
+                    String verificarEmail = cadEmail.getText().toString();
+                    String verificarNome = cadNome.getText().toString();
+                    String verificarSenha = cadSenha.getText().toString();
+                    String verificarConfirma = cadConfirma.getText().toString();
 
-
-
-                if (!editEmail.isFocused()){
-                    String verificarEmail = editEmail.getText().toString();
-                    String verificarNome = editNome.getText().toString();
-                    String verificarSenha = editSenha.getText().toString();
-                    String verificarConfirma = editConfirma.getText().toString();
-
-
-
-                    editSenha.setEnabled(true);
-                    editConfirma.setEnabled(true);
-                    editEntrada.setEnabled(true);
-                    editInter.setEnabled(true);
-                    editSaida.setEnabled(true);
-                    ckSuper.setEnabled(true);
-                    btadastrar.setEnabled(true);
-
-
+//                    cadSenha.setEnabled(true);
+//                    cadConfirma.setEnabled(true);
+//                    editEntrada.setEnabled(true);
+//                    editInter.setEnabled(true);
+//                    editSaida.setEnabled(true);
+//                    ckSuper.setEnabled(true);
+//                    btadastrar.setEnabled(true);
                 }
             }
         });
@@ -87,10 +78,10 @@ public class TelaCadastro extends AppCompatActivity {
 
     public void cadastrarUsuario(View view) {
 
-        String verificarEmail = editEmail.getText().toString();
-        String verificarNome = editNome.getText().toString();
-        String verificarSenha = editSenha.getText().toString();
-        String verificarConfirma = editConfirma.getText().toString();
+        String verificarEmail = cadEmail.getText().toString();
+        String verificarNome = cadNome.getText().toString();
+        String verificarSenha = cadSenha.getText().toString();
+        String verificarConfirma = cadConfirma.getText().toString();
         String verificarEntrada = editEntrada.getText().toString();
         String verificarInter = editInter.getText().toString();
         String verificarSaida = editSaida.getText().toString();
@@ -103,15 +94,7 @@ public class TelaCadastro extends AppCompatActivity {
             snackbar.show();
 
         }else{
-
             CadastrarFirebase(view);
-
-//            Snackbar snackbar = Snackbar.make(view, mensagem[5], Snackbar.LENGTH_SHORT);
-//            snackbar.setBackgroundTint(Color.BLACK);
-//            snackbar.setTextColor(Color.WHITE);
-//            snackbar.show();
-
-
         }
 
     }
@@ -123,8 +106,8 @@ public class TelaCadastro extends AppCompatActivity {
     }
 
     private void CadastrarFirebase(View view) {
-        String verificarEmail = editEmail.getText().toString();
-        String verificarSenha = editSenha.getText().toString();
+        String verificarEmail = cadEmail.getText().toString();
+        String verificarSenha = cadSenha.getText().toString();
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(verificarEmail,verificarSenha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -139,8 +122,7 @@ public class TelaCadastro extends AppCompatActivity {
 
                     try {
                         throw task.getException();
-                    }
-                    catch(FirebaseAuthWeakPasswordException e){
+                    } catch(FirebaseAuthWeakPasswordException e){
                         erro = mensagem[6];
 
                     }catch (FirebaseAuthEmailException e){
