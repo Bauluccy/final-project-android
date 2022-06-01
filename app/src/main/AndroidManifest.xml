@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
         <activity
+            android:name=".TelaUsuario"
+            android:exported="false" />
+        <activity
             android:name=".TelaEditarUsuario"
             android:exported="false" />
         <activity
@@ -26,7 +29,7 @@
             android:exported="false" />
         <activity
             android:name=".TelaLogin"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

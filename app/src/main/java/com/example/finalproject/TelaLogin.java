@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class TelaLogin extends AppCompatActivity {
     private EditText logEmail;
@@ -70,7 +71,7 @@ public class TelaLogin extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            TelaPrincipal();
+                            TelaPrincipalSupervisor();
                         }
                     },3000);
                 }else{
@@ -94,7 +95,18 @@ public class TelaLogin extends AppCompatActivity {
 
     }
 
-    private void TelaPrincipal(){
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser usuarioAtual = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (usuarioAtual != null){
+            TelaPrincipalSupervisor();
+        }
+    }
+
+    private void TelaPrincipalSupervisor(){
         Intent intent = new Intent(getApplicationContext(),TelaSupervisor.class);
         startActivity(intent);
         finish();
