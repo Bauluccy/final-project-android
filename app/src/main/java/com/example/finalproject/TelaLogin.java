@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class TelaLogin extends AppCompatActivity {
     private EditText logEmail;
@@ -28,6 +29,8 @@ public class TelaLogin extends AppCompatActivity {
     private String[] mensagem = {
             "Preencha todos os campos",
             "Email ou senha inválido"};
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +103,8 @@ public class TelaLogin extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser usuarioAtual = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
         if (usuarioAtual != null){
             TelaPrincipalSupervisor();

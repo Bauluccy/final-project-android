@@ -10,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
         <activity
+            android:name=".TelaProcurarUsuario"
+            android:exported="false" />
+        <activity
             android:name=".TelaUsuario"
             android:exported="false" />
         <activity
-            android:name=".TelaEditarUsuario"
+            android:name=".TelaCadastro"
             android:exported="false" />
         <activity
             android:name=".TelaSupervisor"
             android:exported="false" />
         <activity
-            android:name=".TelaCadastro"
+            android:name=".TelaEditarUsuario"
             android:exported="false" />
         <activity
             android:name=".TelaBloqDesbloq"

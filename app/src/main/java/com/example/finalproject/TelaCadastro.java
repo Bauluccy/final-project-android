@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.DocumentReference;
@@ -49,7 +48,7 @@ public class TelaCadastro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);
         
-        cadEmail = findViewById(R.id.EmailUsuario);
+        cadEmail = findViewById(R.id.editarEmail);
         cadSenha = findViewById(R.id.editarSenha);
         cadConfirma = findViewById(R.id.editarConfirma);
         cadNome = findViewById(R.id.editarNome);
@@ -172,7 +171,13 @@ public class TelaCadastro extends AppCompatActivity {
         String usuarioEntrada = editEntrada.getText().toString();
         String usuarioInter = editInter.getText().toString();
         String usuarioSaida = editSaida.getText().toString();
+        int supervisor;
 
+        if(ckSuper.isChecked()){
+            supervisor = 1;
+        }else{
+            supervisor = 0;
+        }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -182,6 +187,7 @@ public class TelaCadastro extends AppCompatActivity {
         dadosUsuarios.put("HorarioEntrada", usuarioEntrada);
         dadosUsuarios.put("HorarioIntervalo", usuarioInter);
         dadosUsuarios.put("HorarioSaida", usuarioSaida);
+        dadosUsuarios.put("Supervisor",supervisor);
 
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
