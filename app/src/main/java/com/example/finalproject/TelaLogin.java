@@ -51,10 +51,7 @@ public class TelaLogin extends AppCompatActivity {
          String senha = logSenha.getText().toString();
 
          if (email.isEmpty() || senha.isEmpty()){
-             Snackbar snackbar = Snackbar.make(view, mensagem[0], Snackbar.LENGTH_SHORT);
-             snackbar.setBackgroundTint(Color.BLACK);
-             snackbar.setTextColor(Color.WHITE);
-             snackbar.show();
+             MostrarMensagem(view, mensagem[0]);
          }else{
              AutenticarUsuario(view);
          }
@@ -87,10 +84,7 @@ public class TelaLogin extends AppCompatActivity {
                         erro = "Erro ao tentar logar...";
                     }
 
-                    Snackbar snackbar = Snackbar.make(view,erro, Snackbar.LENGTH_SHORT);
-                    snackbar.setBackgroundTint(Color.BLACK);
-                    snackbar.setTextColor(Color.WHITE);
-                    snackbar.show();
+                    MostrarMensagem(view, erro);
                 }
             }
         });
@@ -115,5 +109,12 @@ public class TelaLogin extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),TelaSupervisor.class);
         startActivity(intent);
         finish();
+    }
+
+    private void MostrarMensagem(View view,String string) {
+        Snackbar snackbar = Snackbar.make(view, string, Snackbar.LENGTH_SHORT);
+        snackbar.setBackgroundTint(Color.BLACK);
+        snackbar.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 }

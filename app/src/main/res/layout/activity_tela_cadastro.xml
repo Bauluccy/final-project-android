@@ -8,7 +8,7 @@
     tools:context=".TelaCadastro">
 
     <EditText
-        android:id="@+id/editarSenha"
+        android:id="@+id/cadastrarSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -21,10 +21,10 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editarNome" />
+        app:layout_constraintTop_toBottomOf="@+id/cadastrarNome" />
 
     <EditText
-        android:id="@+id/editarConfirma"
+        android:id="@+id/cadastrarConfirma"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editarSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/cadastrarSenha" />
 
     <TextView
         android:id="@+id/textView2"
@@ -73,23 +73,23 @@
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editarConfirma" />
+        app:layout_constraintTop_toBottomOf="@+id/cadastrarConfirma" />
 
     <EditText
-        android:id="@+id/editarInter"
+        android:id="@+id/cadastrarInter"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:enabled="true"
         android:inputType="time"
-        app:layout_constraintEnd_toStartOf="@+id/editarSaida"
+        app:layout_constraintEnd_toStartOf="@+id/cadastrarSaida"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/editarEntrada"
+        app:layout_constraintStart_toEndOf="@+id/cadastrarEntrada"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editarEntrada"
+        android:id="@+id/cadastrarEntrada"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -97,10 +97,10 @@
         android:enabled="true"
         android:inputType="time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editarInter" />
+        app:layout_constraintTop_toTopOf="@+id/cadastrarInter" />
 
     <EditText
-        android:id="@+id/editarSaida"
+        android:id="@+id/cadastrarSaida"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
@@ -108,17 +108,17 @@
         android:enabled="true"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editarInter" />
+        app:layout_constraintTop_toTopOf="@+id/cadastrarInter" />
 
     <CheckBox
-        android:id="@+id/checkEditarSuper"
+        android:id="@+id/checkSuper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="44dp"
         android:text="Supervisor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editarInter"
+        app:layout_constraintTop_toBottomOf="@+id/cadastrarInter"
         android:enabled="true" />
 
     <Button
@@ -133,10 +133,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkEditarSuper" />
+        app:layout_constraintTop_toBottomOf="@+id/checkSuper" />
 
     <EditText
-        android:id="@+id/editarNome"
+        android:id="@+id/cadastrarNome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -150,10 +150,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editarEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/cadastrarEmail" />
 
     <EditText
-        android:id="@+id/editarEmail"
+        android:id="@+id/cadastrarEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

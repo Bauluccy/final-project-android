@@ -15,15 +15,14 @@
         <activity
             android:name=".TelaUsuario"
             android:exported="false" />
+
         <activity
-            android:name=".TelaCadastro"
+            android:name=".TelaLogin"
             android:exported="false" />
         <activity
             android:name=".TelaSupervisor"
             android:exported="false" />
-        <activity
-            android:name=".TelaEditarUsuario"
-            android:exported="false" />
+
         <activity
             android:name=".TelaBloqDesbloq"
             android:exported="false" />
@@ -31,8 +30,8 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".TelaLogin"
-            android:exported="true">
+            android:name=".TelaCadastro"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

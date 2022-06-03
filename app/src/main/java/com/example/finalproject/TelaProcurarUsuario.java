@@ -3,6 +3,7 @@ package com.example.finalproject;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,9 +21,7 @@ public class TelaProcurarUsuario extends AppCompatActivity {
 
     private EditText pesquisarEmail;
     private Button botaoPesquisar;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private String nomeUsuario;
-    String usuarioID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +33,11 @@ public class TelaProcurarUsuario extends AppCompatActivity {
     }
 
     public void iniciarPesquisa(View view) {
+        String email = pesquisarEmail.getText().toString();
 
-        pesquisarEmail.getText().toString();
-
-        usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-//        DocumentReference documentReference = db.collection("Usuarios").document(usuarioID);
-//        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-//                if(documentSnapshot != null){
-//
-//                }
-//            }
-//        });
+        Intent intent = new Intent(this, TelaEditarUsuario.class);
+        intent.putExtra("Email",email);
+        startActivity(intent);
 
     }
 }

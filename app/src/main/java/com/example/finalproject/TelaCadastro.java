@@ -42,45 +42,47 @@ public class TelaCadastro extends AppCompatActivity {
 
     String usuarioID;
 
+    private FirebaseAuth autentication;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_cadastro);
         
-        cadEmail = findViewById(R.id.editarEmail);
-        cadSenha = findViewById(R.id.editarSenha);
-        cadConfirma = findViewById(R.id.editarConfirma);
-        cadNome = findViewById(R.id.editarNome);
+        cadEmail = findViewById(R.id.cadastrarEmail);
+        cadSenha = findViewById(R.id.cadastrarSenha);
+        cadConfirma = findViewById(R.id.cadastrarConfirma);
+        cadNome = findViewById(R.id.cadastrarNome);
 
-        editEntrada = findViewById(R.id.editarEntrada);
-        editInter = findViewById(R.id.editarInter);
-        editSaida = findViewById(R.id.editarSaida);
+        editEntrada = findViewById(R.id.cadastrarEntrada);
+        editInter = findViewById(R.id.cadastrarInter);
+        editSaida = findViewById(R.id.cadastrarSaida);
 
-        ckSuper = findViewById(R.id.checkEditarSuper);
+        ckSuper = findViewById(R.id.checkSuper);
 
         btadastrar = findViewById(R.id.botaoEditarConfirmar);
 
-        cadEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-
-                if (!cadEmail.isFocused()){
-                    String verificarEmail = cadEmail.getText().toString();
-                    String verificarNome = cadNome.getText().toString();
-                    String verificarSenha = cadSenha.getText().toString();
-                    String verificarConfirma = cadConfirma.getText().toString();
-
-//                    cadSenha.setEnabled(true);
-//                    cadConfirma.setEnabled(true);
-//                    editEntrada.setEnabled(true);
-//                    editInter.setEnabled(true);
-//                    editSaida.setEnabled(true);
-//                    ckSuper.setEnabled(true);
-//                    btadastrar.setEnabled(true);
-                }
-            }
-        });
+//        cadEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean b) {
+//
+//                if (!cadEmail.isFocused()){
+//                    String verificarEmail = cadEmail.getText().toString();
+//                    String verificarNome = cadNome.getText().toString();
+//                    String verificarSenha = cadSenha.getText().toString();
+//                    String verificarConfirma = cadConfirma.getText().toString();
+//
+////                    cadSenha.setEnabled(true);
+////                    cadConfirma.setEnabled(true);
+////                    editEntrada.setEnabled(true);
+////                    editInter.setEnabled(true);
+////                    editSaida.setEnabled(true);
+////                    ckSuper.setEnabled(true);
+////                    btadastrar.setEnabled(true);
+//                }
+//            }
+//        });
 
     }
 
@@ -97,10 +99,7 @@ public class TelaCadastro extends AppCompatActivity {
 
         if(verificarEmail.isEmpty() || verificarNome.isEmpty() || verificarSenha.isEmpty() || verificarConfirma.isEmpty() || verificarEntrada.isEmpty() || verificarInter.isEmpty() || verificarSaida.isEmpty())
         {
-            Snackbar snackbar = Snackbar.make(view, mensagem[4], Snackbar.LENGTH_SHORT);
-            snackbar.setBackgroundTint(Color.BLACK);
-            snackbar.setTextColor(Color.WHITE);
-            snackbar.show();
+            MostrarMensagem(view, mensagem[4]);
 
         }else{
             CadastrarFirebase(view);
@@ -114,14 +113,13 @@ public class TelaCadastro extends AppCompatActivity {
     private void CadastrarFirebase(View view) {
         String verificarEmail = cadEmail.getText().toString();
         String verificarSenha = cadSenha.getText().toString();
-        String verificarNome = cadNome.getText().toString();
         String verificarConfirma = cadConfirma.getText().toString();
-
-
 
         if (verificarSenha.equals(verificarConfirma)) {
 
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(verificarEmail, verificarSenha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            autentication =  FirebaseAuth.getInstance();
+
+            autentication.getInstance().createUserWithEmailAndPassword(verificarEmail, verificarSenha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
 
                 @Override
@@ -132,10 +130,7 @@ public class TelaCadastro extends AppCompatActivity {
 
                         SalvarDadosUsuario();
 
-                        Snackbar snackbar = Snackbar.make(view, mensagem[5], Snackbar.LENGTH_SHORT);
-                        snackbar.setBackgroundTint(Color.BLACK);
-                        snackbar.setTextColor(Color.WHITE);
-                        snackbar.show();
+                        MostrarMensagem(view, mensagem[5]);
                     } else {
 
                         try {
@@ -150,27 +145,25 @@ public class TelaCadastro extends AppCompatActivity {
                             erro = "Erro ao cadastrar usuário.";
                         }
 
+                        MostrarMensagem(view, erro);
 
                     }
 
                 }
             });
         }else{
-
-                        Snackbar snackbar = Snackbar.make(view, "Por favor, confirme a senha novamente!", Snackbar.LENGTH_SHORT);
-                        snackbar.setBackgroundTint(Color.BLACK);
-                        snackbar.setTextColor(Color.WHITE);
-                        snackbar.show();
-
+            MostrarMensagem(view, "As senhas não coincidem");
         }
-
     }
+
 
     private void SalvarDadosUsuario() {
         String usuarioNome = cadNome.getText().toString();
         String usuarioEntrada = editEntrada.getText().toString();
         String usuarioInter = editInter.getText().toString();
         String usuarioSaida = editSaida.getText().toString();
+        String autenticacao = autentication.getUid().toString();
+        String usuarioEmail = cadEmail.getText().toString();
         int supervisor;
 
         if(ckSuper.isChecked()){
@@ -183,11 +176,14 @@ public class TelaCadastro extends AppCompatActivity {
 
         Map<String,Object> dadosUsuarios= new HashMap<>();
 
+        dadosUsuarios.put("Email",usuarioEmail);
         dadosUsuarios.put("Nome", usuarioNome);
         dadosUsuarios.put("HorarioEntrada", usuarioEntrada);
         dadosUsuarios.put("HorarioIntervalo", usuarioInter);
         dadosUsuarios.put("HorarioSaida", usuarioSaida);
         dadosUsuarios.put("Supervisor",supervisor);
+        dadosUsuarios.put("ID",autenticacao);
+
 
         usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -206,4 +202,11 @@ public class TelaCadastro extends AppCompatActivity {
         });
 
     }
+    private void MostrarMensagem(View view,String string) {
+        Snackbar snackbar = Snackbar.make(view, string, Snackbar.LENGTH_SHORT);
+        snackbar.setBackgroundTint(Color.BLACK);
+        snackbar.setTextColor(Color.WHITE);
+        snackbar.show();
+    }
 }
+
